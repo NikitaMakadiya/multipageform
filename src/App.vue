@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <MultiPage />
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
+import MultiPage from "./components/MultiPage.vue";
 import "./assets/main.css";
 
 export default {
   name: "App",
   components: {
-    HelloWorld,
+    MultiPage,
   },
 };
 </script>
