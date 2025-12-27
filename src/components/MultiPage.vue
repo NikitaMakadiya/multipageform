@@ -1,11 +1,9 @@
 <template>
   <div class="w-1/2 m-auto">
     Multi page form
-    <component
-      :is="steps[currentStep].component"
-      :formdata="formdata"
-      @update-field="updateField"
-    />
+
+    <PersonalDetail v-show="currentStep === 0" ref="personalRef" />
+    <CompanyDetail v-show="currentStep === 1" ref="companyRef" />
 
     <div class="flex justify-between mt-6 pb-10 mx-10">
       <button
@@ -32,25 +30,27 @@
         Submit
       </button>
     </div>
+    <pre>{{ personalData }}</pre>
+    <pre>{{ companyData }}</pre>
   </div>
 </template>
 
 <script>
 import PersonalDetail from "./pages/PersonalDetail.vue";
-import CompanyDetailVue from "./pages/CompanyDetail.vue";
+import CompanyDetail from "./pages/CompanyDetail.vue";
 
 export default {
   name: "MultiPage",
-  components: { PersonalDetail, CompanyDetailVue },
+  components: { PersonalDetail, CompanyDetail },
   data() {
     return {
       currentStep: 0,
-      steps: [{ component: PersonalDetail }, { component: CompanyDetailVue }],
-      formdata: {
-        fname: "",
-
-        compnyname: "",
-      },
+      personalData: "",
+      companyData: "",
+      steps: [
+        { component: PersonalDetail, ref: "personalRef" },
+        { component: CompanyDetail, ref: "companyRef" },
+      ],
     };
   },
   methods: {
@@ -62,7 +62,12 @@ export default {
     },
 
     submit() {
-      console.log("Final Form Data:", this.formdata);
+      const personaldata = this.$refs.personalRef.getData();
+      const companydata = this.$refs.companyRef.getData();
+      // console.log("Personal Data:", personaldata);
+      // console.log("Company Data:", companydata);
+      this.personalData = personaldata;
+      this.companyData = companydata;
     },
   },
 };

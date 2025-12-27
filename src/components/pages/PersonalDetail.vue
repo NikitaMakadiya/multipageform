@@ -1,21 +1,38 @@
 <template>
   <div>
-    <h1 class="my-4 text-red-800 font-bold text-2xl">Personal Detail</h1>
-    <div class="w-3/4 mx-auto shadow-lg p-20">
-      <div class="flex items-center gap-3 mb-3">
-        <label class="w-28">First Name</label>
-        <input :value="formdata.fname" name="fname" />
-      </div>
+    <h1 class="font-bold text-lg text-red-800 my-10">Personal Detail</h1>
+    <div>
+      <label>First Name:</label>
+      <input
+        v-model="formdata.firstName"
+        type="text"
+        class="border p-1 mb-2 w-full"
+      />
+
+      <label>Last Name:</label>
+      <input
+        v-model="formdata.lastName"
+        type="text"
+        class="border p-1 mb-2 w-full"
+      />
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: "PersonalDetail",
-  props: {
-    formdata: {
-      type: Object,
-      required: true,
+  data() {
+    return {
+      formdata: {
+        firstName: "",
+        lastName: "",
+      },
+    };
+  },
+  methods: {
+    getData() {
+      return this.formdata;
     },
   },
 };
