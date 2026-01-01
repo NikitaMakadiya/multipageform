@@ -4,19 +4,11 @@
     <div class="w-3/4 flex-col justify-start">
       <div class="justify-start gap-5">
         <label>Company Name:</label>
-        <input
-          v-model="formdata.companyName"
-          type="text"
-          class="border p-1 mb-2"
-        />
+        <input v-model="form.companyName" type="text" class="border p-1 mb-2" />
       </div>
       <div>
         <label>Position:</label>
-        <input
-          v-model="formdata.position"
-          type="text"
-          class="border p-1 mb-2"
-        />
+        <input v-model="form.position" type="text" class="border p-1 mb-2" />
       </div>
     </div>
   </div>
@@ -27,7 +19,7 @@ export default {
   name: "CompanyDetail",
   data() {
     return {
-      formdata: {
+      form: {
         companyName: "",
         position: "",
       },
@@ -35,7 +27,7 @@ export default {
   },
   methods: {
     getData() {
-      return this.formdata;
+      return this.form;
     },
   },
 };

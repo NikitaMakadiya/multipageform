@@ -1,18 +1,14 @@
 <template>
   <div id="app">
-    <MultiPage />
+    <router-view />
   </div>
 </template>
 
 <script>
-import MultiPage from "./components/MultiPage.vue";
 import "./assets/main.css";
 
 export default {
   name: "App",
-  components: {
-    MultiPage,
-  },
 };
 </script>
 
